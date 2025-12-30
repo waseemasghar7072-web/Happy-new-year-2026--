@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026 - Special Gift!</title>
+    
+    <meta property="og:title" content="Aapke liye ek Surprise Gift hai! 🎁">
+    <meta property="og:description" content="Naye Saal ka jadoo dekhne ke liye click karein! ✨">
+    <meta property="og:image" content="https://images.pexels.com/photos/3826670/pexels-photo-3826670.jpeg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Great+Vibes&family=Montserrat:wght@400;900&display=swap" rel="stylesheet">
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            /* Royal Purple Gradient Background */
+            background: radial-gradient(circle at center, #6a1b9a 0%, #4a148c 50%, #2e003e 100%);
+            height: 100vh; display: flex; justify-content: center; align-items: center;
+            font-family: 'Montserrat', sans-serif; overflow: hidden; perspective: 1000px;
+        }
+
+        /* 3D Fireworks Canvas */
+        #fireworks { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        
+        /* Glassmorphism Card with Float Animation */
+        .main-card {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); width: 95%; max-width: 400px;
+            padding: 30px 20px; border-radius: 30px; text-align: center;
+            z-index: 10; border: 2px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float { 0%, 100% { transform: translateY(0px) rotateX(2deg); } 50% { transform: translateY(-15px) rotateX(-2deg); } }
+
+        /* Beautiful Glowing Name */
+        #display-name {
+            font-family: 'Great Vibes', cursive; font-size: 3.2rem;
+            color: #fff; text-shadow: 0 0 10px #d4af37, 0 0 20px #ffd700, 0 0 30px #d4af37;
+            margin-bottom: 10px; display: block;
+        }
+
+        .title-hny {
+            font-family: 'Dancing Script', cursive; font-size: 3.5rem;
+            line-height: 1.1; margin-bottom: 15px;
+            background: linear-gradient(to bottom, #cf9d1d, #ffeb3b, #d4af37);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .year-2026 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 4rem; color: white; display: block; margin-top: 5px; }
+
+        /* Input Styling */
+        .name-input {
+            width: 100%; padding: 15px; border-radius: 50px; border: none;
+            background: #fff; font-size: 1.1rem; margin-bottom: 15px;
+            text-align: center; font-weight: bold; color: #4a148c; outline: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* WhatsApp Button with Glow */
+        .btn-share {
+            background: linear-gradient(45deg, #FF9800, #F44336);
+            color: white; padding: 16px; border-radius: 50px;
+            font-weight: bold; font-size: 1.2rem; border: none;
+            cursor: pointer; width: 100%; box-shadow: 0 10px 20px rgba(244, 67, 54, 0.4);
+            transition: 0.3s;
+        }
+        .btn-share:active { transform: scale(0.95); }
+
+        /* Ad Container Fix */
+        .ad-slot { 
+            margin: 15px 0; 
+            min-height: 50px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="fireworks"></canvas>
+
+    <div class="main-card">
+        
+        <div class="ad-slot">
+            <script type="text/javascript">
+                atOptions = { 'key' : '213a3740087f7d6b4ac768402d285049', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/213a3740087f7d6b4ac768402d285049/invoke.js"></script>
+        </div>
+
+        <span id="display-name">Guest</span>
+        <p style="color:#eee; margin-bottom:10px; letter-spacing:1px;">KI TARAF SE</p>
+
+        <h1 class="title-hny">Happy New Year <span class="year-2026">2026</span></h1>
+
+        <input type="text" id="userInput" class="name-input" placeholder="✍️ Apna Naam Likhein...">
+
+        <button class="btn-share" onclick="shareWish()">
+            🚀 WhatsApp par Bhejein
+        </button>
+
+        <div class="ad-slot">
+            <script type="text/javascript">
+                atOptions = { 'key' : '213a3740087f7d6b4ac768402d285049', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="https://www.highperformanceformat.com/213a3740087f7d6b4ac768402d285049/invoke.js"></script>
+        </div>
+
+    </div>
+
+    <script>
+        // --- 3D FIREWORKS LOGIC ---
+        const canvas = document.getElementById('fireworks');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x; this.y = y; this.color = color;
+                this.velocity = { x: (Math.random() - 0.5) * 8, y: (Math.random() - 0.5) * 10 };
+                this.alpha = 1; this.friction = 0.95;
+            }
+            draw() { ctx.globalAlpha = this.alpha; ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fillStyle = this.color; ctx.fill(); }
+            update() { this.velocity.x *= this.friction; this.velocity.y *= this.friction; this.x += this.velocity.x; this.y += this.velocity.y; this.alpha -= 0.01; }
+        }
+        function createFirework() {
+            const x = Math.random() * canvas.width; const y = Math.random() * canvas.height / 2;
+            const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            for (let i = 0; i < 40; i++) particles.push(new Particle(x, y, color));
+        }
+        function animate() {
+            ctx.fillStyle = 'rgba(46, 0, 62, 0.2)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, i) => { if (p.alpha > 0) { p.update(); p.draw(); } else { particles.splice(i, 1); } });
+            if (Math.random() < 0.06) createFirework();
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // --- NAME LOGIC ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const sender = urlParams.get('name');
+        if (sender) {
+            const cleanName = decodeURIComponent(sender);
+            document.getElementById('display-name').innerText = cleanName;
+            document.title = cleanName + " Wishing You Happy New Year 2026!";
+        }
+
+        // --- SHARE LOGIC ---
+        function shareWish() {
+            const name = document.getElementById('userInput').value;
+            if (!name) { alert("Please enter your name!"); return; }
+            const siteUrl = window.location.origin + window.location.pathname;
+            const finalUrl = siteUrl + "?name=" + encodeURIComponent(name);
+            const text = `✨ *${name}* ne aapke liye kuch special bheja hai! 🎁\n\nJaldi dekho warna surprise miss ho jayega! 👇\n\n👉 ${finalUrl}\n\n🎆 *Happy New Year 2026* 🎆`;
+            window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(text));
+        }
+    </script>
+</body>
+</html>
